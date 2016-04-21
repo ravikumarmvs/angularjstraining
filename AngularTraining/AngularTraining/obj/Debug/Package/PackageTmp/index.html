@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="EmployeeDB" >
+<head>
+    <title> Employee Registration Form </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="EmployeesEntry">
+        <div>
+            <input type="text" placeholder="input name" ng-model="name"/>
+            <input type="text" placeholder="input role" ng-model="role" />
+            <button ng-click="addEmployees()" ng-disabled="CheckEnableDisable()"> Add Employees</button>
+        </div>
+        <ul>
+            <li ng-repeat="e in employees">
+                <first-directive></first-directive>
+            </li>
+        </ul>
+    </div>
+      <div ng-controller="EmployeeProfile">
+        <h3>Name is {{currentEmployee.firstName}}</h3>
+        <h3>Role is {{currentEmployee.empRole}}</h3>
+        <h3>Project is {{currentEmployee.project}}</h3>
+    </div>
+    <script src="app\app.module.js"></script>
+    <script src="Controllers\employeesController.js"></script>
+    <script src="Factories\employeeFactory.js"></script>
+    <script src="Directives\employeeDirective.js"></script>
+    <script src="Controllers\profileController.js"></script>
+
+</body>
+</html>
