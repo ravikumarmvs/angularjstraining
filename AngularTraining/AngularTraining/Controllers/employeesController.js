@@ -5,7 +5,9 @@
 angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootScope, $scope, employeeFactory) {
     
     $scope.EmployeeArray = employeeFactory.EmployeeArray;
+    $scope.EmployeeAddedOrUpdated = { statusValue: '' };
     $scope.InitialEmployeeInParentScope = {};
+    $scope.InitialEmployeeInParentScope.projectDetails = {};
     $rootScope.rootHistoryItems = [];
        $rootScope.applicationUserName = "Ravi Kumar";
        $rootScope.applicationUserId = "E3102";
@@ -14,10 +16,11 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
            return (!$scope.InitialEmployeeInParentScope.name || !$scope.InitialEmployeeInParentScope.role || !$scope.InitialEmployeeInParentScope.projectDetails.project || !$scope.InitialEmployeeInParentScope.projectDetails.projectLocation);
        }
 
-       $scope.addEmployees = function () {
+       $scope.addEmployees = function () {           
            var newEmployee = { name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation } };
            if (employeeFactory.compareEmployeeObject(undefined, newEmployee))
                return alert('Employee already exists. Please enter a unique Employee');
+           $scope.EmployeeAddedOrUpdated = { statusValue: 'status: Employee Added' };
            if (employeeFactory.sharedProfile.name == "default name") {
                if (employeeFactory.EmployeeArray == undefined || employeeFactory.EmployeeArray.length <= 0) {
                    employeeFactory.updateSharedProfile(newEmployee, 0);

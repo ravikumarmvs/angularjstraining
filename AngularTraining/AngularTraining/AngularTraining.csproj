@@ -61,11 +61,13 @@
     <Content Include="app\app.module.js" />
     <Content Include="Controllers\employeesController.js" />
     <Content Include="Controllers\profileController.js" />
+    <Content Include="Directives\employeeStatusDirective.js" />
     <Content Include="Directives\employeeEntryDirective.js" />
     <Content Include="Directives\employeeEntryDirective.html" />
     <Content Include="Directives\employeeDirective.html" />
     <Content Include="Directives\employeeDirective.js" />
     <Content Include="Factories\employeeFactory.js" />
+    <Content Include="mycss.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\AngularJS.pubxml" />
     <None Include="Properties\PublishProfiles\AngularWebSite.pubxml" />
