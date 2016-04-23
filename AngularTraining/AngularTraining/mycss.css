@@ -1,5 +1,9 @@
 ﻿body {
 }
-.employeeStatus{
+.employeeStatusAdded{
+    color:green;
+}
+.employeeStatusDeleted{
     color:red;
 }
+

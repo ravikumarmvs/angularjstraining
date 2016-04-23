@@ -39,6 +39,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
        $scope.removeEmployees = function (e, indexValue) {
            
            employeeFactory.EmployeeArray.splice(employeeFactory.EmployeeArray.indexOf(e), 1);
+           $scope.EmployeeAddedOrUpdated = { statusValue: 'status: Employee Deleted' };
            if (employeeFactory.compareEmployeeObject(e, employeeFactory.sharedProfile))
            {
                employeeFactory.updateSharedProfile(undefined);
