@@ -20,6 +20,8 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
            var newEmployee = { name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation } };
            if (employeeFactory.compareEmployeeObject(undefined, newEmployee))
                return alert('Employee already exists. Please enter a unique Employee');
+           employeeFactory.EmployeeStatusString.statusValue = 'status: Employee Added';
+           //employeeFactory.UpdateEmployeeStatusString('status: Employee Added');
            $scope.EmployeeAddedOrUpdated = { statusValue: 'status: Employee Added' };
            if (employeeFactory.sharedProfile.name == "default name") {
                if (employeeFactory.EmployeeArray == undefined || employeeFactory.EmployeeArray.length <= 0) {
@@ -40,6 +42,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
            
            employeeFactory.EmployeeArray.splice(employeeFactory.EmployeeArray.indexOf(e), 1);
            $scope.EmployeeAddedOrUpdated = { statusValue: 'status: Employee Deleted' };
+           employeeFactory.EmployeeStatusString.statusValue = 'status: Employee Deleted';
            if (employeeFactory.compareEmployeeObject(e, employeeFactory.sharedProfile))
            {
                employeeFactory.updateSharedProfile(undefined);

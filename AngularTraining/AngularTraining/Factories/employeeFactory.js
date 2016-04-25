@@ -16,6 +16,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
         EmployeeArray: [{ name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' } }, { name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' } }, { name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' } }]
         ,
         DisableUpdateProfile: true,
+        EmployeeStatusString: {statusValue:''},
         updateSharedProfile: function (newEmployee, indexValue) {
             if (newEmployee != undefined) {
                 this.sharedProfile.name = newEmployee.name;
@@ -58,6 +59,9 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             else {
                 return ((employee1.name == profileEmployee.name) && (employee1.role == profileEmployee.role) && (employee1.projectDetails.project == profileEmployee.projectDetails.project) && (employee1.projectDetails.projectLocation == profileEmployee.projectDetails.projectLocation));
             }
+        },
+        UpdateEmployeeStatusString: function (status) {
+            this.EmployeeStatusString.statusValue = status;
         }
     };
 });

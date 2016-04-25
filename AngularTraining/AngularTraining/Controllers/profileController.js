@@ -14,6 +14,7 @@ angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootSco
         if (existingUser != undefined && existingUser.name != undefined) {
             $rootScope.rootHistoryItems.push({ name: existingUser.name + " profile changed", indexValue: EmployeeIndex });
         }
-        employeeFactory.UpdateEmployeeValue(newEmployee , EmployeeIndex);
+        employeeFactory.UpdateEmployeeValue(newEmployee, EmployeeIndex);
+        employeeFactory.EmployeeStatusString.statusValue = 'status: Employee Updated';
     }
   });
