@@ -11,7 +11,7 @@
             <td>
                 <div ng-controller="EmployeesEntryCtrl">                    
                     <employee-entry-directive action-type="addEmployees()" my-initial-employee="InitialEmployeeInParentScope" action-name="Add Employees" my-enable-disable="CheckEnableDisable()"></employee-entry-directive>
-                    <h4 employee-status-directive="EmployeeAddedOrUpdated"></h4>
+                    <h4 employee-status-directive></h4>
                     <ul>
                         <li ng-repeat="e in EmployeeArray">
                             <first-directive></first-directive>
@@ -33,10 +33,7 @@
                 </div>
             </td>
             <td valign="top">
-                <h3> <span> User Name: {{applicationUserName}} , User Id: {{applicationUserId}}</span> </h3>
-                <!--<div ng-controller="EmployeesEntryCtrl">
-                   <h3 employee-status-directive="EmployeeAddedOrUpdated"></h3>
-                </div>-->
+                <h3> <span> User Name: {{applicationUserName}} , User Id: {{applicationUserId}}</span> </h3>                
             </td>
         </tr>
     </table>

@@ -13,10 +13,10 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             },
             index: ''
         },
-        EmployeeArray: [{ name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' } }, { name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' } }, { name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' } }]
+        EmployeeArray: [{ name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }, index: 0 }, { name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }, index: 1 }, { name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }, index: 2 }]
         ,
         DisableUpdateProfile: true,
-        EmployeeStatusString: {statusValue:''},
+        EmployeeStatusString: {statusValue:'', index:''},
         updateSharedProfile: function (newEmployee, indexValue) {
             if (newEmployee != undefined) {
                 this.sharedProfile.name = newEmployee.name;
@@ -41,7 +41,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             this.updateSharedProfile(employee, e);
         },
         AddArrayValue: function (e) {
-            var employee1 = { name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation } };
+            var employee1 = { name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }, index:e.index };
             this.EmployeeArray.push(employee1);
         },
         DisableEmployeeProfileUpdationButton: function (updateOrNot) {
@@ -59,9 +59,9 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             else {
                 return ((employee1.name == profileEmployee.name) && (employee1.role == profileEmployee.role) && (employee1.projectDetails.project == profileEmployee.projectDetails.project) && (employee1.projectDetails.projectLocation == profileEmployee.projectDetails.projectLocation));
             }
-        },
-        UpdateEmployeeStatusString: function (status) {
-            this.EmployeeStatusString.statusValue = status;
         }
+        //UpdateEmployeeStatusString: function (status) {
+        //    this.EmployeeStatusString.statusValue = status;
+        //}
     };
 });

@@ -5,7 +5,6 @@
 angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootScope, $scope, employeeFactory) {
     
     $scope.EmployeeArray = employeeFactory.EmployeeArray;
-    $scope.EmployeeAddedOrUpdated = { statusValue: '' };
     $scope.InitialEmployeeInParentScope = {};
     $scope.InitialEmployeeInParentScope.projectDetails = {};
     $rootScope.rootHistoryItems = [];
@@ -17,12 +16,11 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
        }
 
        $scope.addEmployees = function () {           
-           var newEmployee = { name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation } };
+           var newEmployee = { name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation }, index: employeeFactory.EmployeeArray.length };
            if (employeeFactory.compareEmployeeObject(undefined, newEmployee))
                return alert('Employee already exists. Please enter a unique Employee');
-           employeeFactory.EmployeeStatusString.statusValue = 'status: Employee Added';
-           //employeeFactory.UpdateEmployeeStatusString('status: Employee Added');
-           $scope.EmployeeAddedOrUpdated = { statusValue: 'status: Employee Added' };
+           
+           
            if (employeeFactory.sharedProfile.name == "default name") {
                if (employeeFactory.EmployeeArray == undefined || employeeFactory.EmployeeArray.length <= 0) {
                    employeeFactory.updateSharedProfile(newEmployee, 0);
@@ -34,6 +32,8 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
                }
            }
            employeeFactory.AddArrayValue(newEmployee);
+           employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 };
+           
            $rootScope.rootHistoryItems.push({ name: newEmployee.name + " has been added", indexValue: Math.random() });
            init();
        }
@@ -41,8 +41,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
        $scope.removeEmployees = function (e, indexValue) {
            
            employeeFactory.EmployeeArray.splice(employeeFactory.EmployeeArray.indexOf(e), 1);
-           $scope.EmployeeAddedOrUpdated = { statusValue: 'status: Employee Deleted' };
-           employeeFactory.EmployeeStatusString.statusValue = 'status: Employee Deleted';
+           employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Deleted', index: indexValue };
            if (employeeFactory.compareEmployeeObject(e, employeeFactory.sharedProfile))
            {
                employeeFactory.updateSharedProfile(undefined);

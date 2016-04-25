@@ -4,11 +4,12 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
     return {
         restrict: "AEC",
         link: function (scope, element, attr) {
+            var timeoutId;
+            enterText(employeeFactory.EmployeeStatusString.statusValue);
 
-            enterText(scope.$eval(attr.employeeStatusDirective));
-
-            scope.$watch(function () { return employeeFactory.EmployeeStatusString.statusValue }, function (NewValue, OldValue) {
+            scope.$watch(function () { return employeeFactory.EmployeeStatusString }, function (NewValue, OldValue) {
                 if (NewValue !== undefined || NewValue !== '') {
+                    NewValue = employeeFactory.EmployeeStatusString.statusValue;
                     if (NewValue.includes('Added')) {
                         element.removeClass('employeeStatusDeleted');
                         element.removeClass('employeeStatusUpdated');
@@ -25,9 +26,7 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
                         element.removeClass('employeeStatusUpdated');
                         element.addClass('employeeStatusDeleted');
                     }
-
-                    enterText(NewValue);
-                    
+                    enterText(NewValue);                    
                 }
                 timeoutId = $interval(function () {
                     element.text('');
@@ -40,10 +39,10 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
             }
 
             element.on('$destroy', function () {
-                $interval.cancel(timeoutId);
+                if (angular.isDefined(timeoutId)) {
+                    $interval.cancel(timeoutId);
+                }
             });
-
-            //// start the UI update process; keep it for 3 seconds.
 
         }
     }
