@@ -13,7 +13,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             },
             index: ''
         },
-        EmployeeArray: [{ name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }, index: 0 }, { name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }, index: 1 }, { name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }, index: 2 }]
+        EmployeeArray: [{id:0, name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }, index: 0 }, {id:1, name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }, index: 1 }, {id:2, name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }, index: 2 }]
         ,
         DisableUpdateProfile: true,
         EmployeeStatusString: {statusValue:'', index:''},
@@ -41,7 +41,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             this.updateSharedProfile(employee, e);
         },
         AddArrayValue: function (e) {
-            var employee1 = { name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }, index:e.index };
+            var employee1 = { id: e.id, name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }, index:e.index };
             this.EmployeeArray.push(employee1);
         },
         DisableEmployeeProfileUpdationButton: function (updateOrNot) {

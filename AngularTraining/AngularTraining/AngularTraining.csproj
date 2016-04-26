@@ -67,6 +67,8 @@
     <Content Include="Directives\employeeDirective.html" />
     <Content Include="Directives\employeeDirective.js" />
     <Content Include="Factories\employeeFactory.js" />
+    <Content Include="Filters\employeeFilter.js" />
+    <Content Include="Filters\employeeSearchFilter.js" />
     <Content Include="mycss.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\AngularJS.pubxml" />

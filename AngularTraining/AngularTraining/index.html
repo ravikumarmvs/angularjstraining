@@ -12,8 +12,9 @@
                 <div ng-controller="EmployeesEntryCtrl">                    
                     <employee-entry-directive action-type="addEmployees()" my-initial-employee="InitialEmployeeInParentScope" action-name="Add Employees" my-enable-disable="CheckEnableDisable()"></employee-entry-directive>
                     <h4 employee-status-directive></h4>
+                    Filter string: <input type="text" ng-model="search.name" /> Case sensitive search? : <input type="checkbox" ng-model="isCaseSensitiveSearch" />
                     <ul>
-                        <li ng-repeat="e in EmployeeArray">
+                        <li ng-repeat="e in EmployeeArray |  employeeSearchFilter:search.name:isCaseSensitiveSearch | orderBy:'-id'">
                             <first-directive></first-directive>
                         </li>
                     </ul>
@@ -46,6 +47,7 @@
     <script src="Directives\employeeDirective.js"></script>
     <script src="Directives\employeeStatusDirective.js"></script>
     <script src="Controllers\profileController.js"></script>
-
+    <script src="Filters\employeeFilter.js"></script>
+    <script src="Filters\employeeSearchFilter.js"></script>
 </body>
 </html>
