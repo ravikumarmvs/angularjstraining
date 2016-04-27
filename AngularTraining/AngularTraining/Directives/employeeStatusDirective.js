@@ -1,6 +1,6 @@
 /// <reference path="../app/angular.intellisense.js" />
 
-angular.module('EmployeeDB').directive('employeeStatusDirective', function ($interval, employeeFactory) {
+angular.module('EmployeeDB').directive('employeeStatusDirective', function ($timeout, employeeFactory) {
     return {
         restrict: "AEC",
         link: function (scope, element, attr) {
@@ -28,9 +28,8 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
                     }
                     enterText(NewValue);                    
                 }
-                timeoutId = $interval(function () {
-                    element.text('');
-                    $interval.cancel(timeoutId);
+                timeoutId = $timeout(function () {
+                    element.text('');                    
                 }, 3000);
             }, true);
 
@@ -38,11 +37,11 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
                 element.text(value);
             }
 
-            element.on('$destroy', function () {
-                if (angular.isDefined(timeoutId)) {
-                    $interval.cancel(timeoutId);
-                }
-            });
+            //element.on('$destroy', function () {
+            //    if (angular.isDefined(timeoutId)) {
+            //        $interval.cancel(timeoutId);
+            //    }
+            //});
 
         }
     }

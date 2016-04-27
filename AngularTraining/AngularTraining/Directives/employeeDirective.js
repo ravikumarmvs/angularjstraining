@@ -1,13 +1,13 @@
 /// <reference path="../app/angular.intellisense.js" />
 
-angular.module('EmployeeDB').directive('firstDirective', function ($interval, employeeFactory) {
+angular.module('EmployeeDB').directive('firstDirective', function ($timeout, employeeFactory) {
     return {
         restrict: "AEC",
         templateUrl: 'Directives/employeeDirective.html',
         link: function (scope, element, attr) {
             var myTimeoutId;
             scope.$watch(function () { return employeeFactory.EmployeeStatusString }, function (NewValue, OldValue) {
-                if (NewValue !== undefined && NewValue !== '' && NewValue !== OldValue) {
+                if (NewValue !== undefined && NewValue !== '') {
                     if (employeeFactory.EmployeeStatusString.index === scope.e.index) {
                         enterText(employeeFactory.EmployeeStatusString.statusValue);
                     }
@@ -38,18 +38,17 @@ angular.module('EmployeeDB').directive('firstDirective', function ($interval, em
                     element.addClass('employeeStatusDeleted');
                 }
                 if (NewValue !== 'default') {
-                    myTimeoutId = $interval(function () {
-                        enterText('default');
-                        $interval.cancel(myTimeoutId);
+                    myTimeoutId = $timeout(function () {
+                        enterText('default');                        
                     }, 3000);
                 }
             }
 
-            element.on('$destroy', function () {
-                if (angular.isDefined(myTimeoutId)) {
-                    $interval.cancel(myTimeoutId);
-                }
-            });
+            //element.on('$destroy', function () {
+            //    if (angular.isDefined(myTimeoutId)) {
+            //        $interval.cancel(myTimeoutId);
+            //    }
+            //});
 
         }
     }
