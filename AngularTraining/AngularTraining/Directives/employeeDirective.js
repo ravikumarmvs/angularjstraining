@@ -7,14 +7,14 @@ angular.module('EmployeeDB').directive('firstDirective', function ($interval, em
         link: function (scope, element, attr) {
             var myTimeoutId;
             scope.$watch(function () { return employeeFactory.EmployeeStatusString }, function (NewValue, OldValue) {
-                if (NewValue !== undefined || NewValue !== '' || NewValue !== ' ') {
+                if (NewValue !== undefined && NewValue !== '' && NewValue !== OldValue) {
                     if (employeeFactory.EmployeeStatusString.index === scope.e.index) {
                         enterText(employeeFactory.EmployeeStatusString.statusValue);
                     }
                 }
 
                               
-            });
+            }, true);
 
             function enterText(NewValue) {
                 if (NewValue === undefined || NewValue === '' || NewValue.includes('default')) {

@@ -16,7 +16,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
         EmployeeArray: [{id:0, name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }, index: 0 }, {id:1, name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }, index: 1 }, {id:2, name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }, index: 2 }]
         ,
         DisableUpdateProfile: true,
-        EmployeeStatusString: {statusValue:'', index:''},
+        EmployeeStatusString: {statusValue:'', index:'', junk:''},
         updateSharedProfile: function (newEmployee, indexValue) {
             if (newEmployee != undefined) {
                 this.sharedProfile.name = newEmployee.name;
@@ -59,9 +59,11 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             else {
                 return ((employee1.name == profileEmployee.name) && (employee1.role == profileEmployee.role) && (employee1.projectDetails.project == profileEmployee.projectDetails.project) && (employee1.projectDetails.projectLocation == profileEmployee.projectDetails.projectLocation));
             }
+        },
+        UpdateEmployeeStatusString: function (statusObject) {
+            this.EmployeeStatusString.statusValue = statusObject.statusValue;
+            this.EmployeeStatusString.index = statusObject.index;
+            this.EmployeeStatusString.junk = Math.random(1000);
         }
-        //UpdateEmployeeStatusString: function (status) {
-        //    this.EmployeeStatusString.statusValue = status;
-        //}
     };
 });

@@ -32,7 +32,8 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
                }
            }
            employeeFactory.AddArrayValue(newEmployee);
-           employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 };
+           employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 });
+           //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 };
            
            $rootScope.rootHistoryItems.push({ name: newEmployee.name + " has been added", indexValue: Math.random() });
            init();
@@ -41,7 +42,8 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
        $scope.removeEmployees = function (e, indexValue) {
            
            employeeFactory.EmployeeArray.splice(employeeFactory.EmployeeArray.indexOf(e), 1);
-           employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Deleted', index: indexValue };
+           employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Deleted', index: indexValue });
+           //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Deleted', index: indexValue };
            if (employeeFactory.compareEmployeeObject(e, employeeFactory.sharedProfile))
            {
                employeeFactory.updateSharedProfile(undefined);

@@ -9,12 +9,13 @@ angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootSco
         return !$scope.currentEmployee.name || !$scope.currentEmployee.role || !$scope.currentEmployee.projectDetails.project || !$scope.currentEmployee.projectDetails.projectLocation || employeeFactory.DisableUpdateProfile;
     }
     $scope.updateEmployees = function (currentEmployee, EmployeeIndex) {
-        var newEmployee = { name: employeeFactory.sharedProfile.name, role: employeeFactory.sharedProfile.role, projectDetails: { project: employeeFactory.sharedProfile.projectDetails.project, projectLocation: employeeFactory.sharedProfile.projectDetails.projectLocation } };
+        var newEmployee = { name: employeeFactory.sharedProfile.name, role: employeeFactory.sharedProfile.role, projectDetails: { project: employeeFactory.sharedProfile.projectDetails.project, projectLocation: employeeFactory.sharedProfile.projectDetails.projectLocation }, index:employeeFactory.sharedProfile.index };
         var existingUser = employeeFactory.EmployeeArray[EmployeeIndex];
         if (existingUser != undefined && existingUser.name != undefined) {
             $rootScope.rootHistoryItems.push({ name: existingUser.name + " profile changed", indexValue: EmployeeIndex });
         }
         employeeFactory.UpdateEmployeeValue(newEmployee, EmployeeIndex);
-        employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Updated', index: EmployeeIndex };
+        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Updated', index: EmployeeIndex });
+        //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Updated', index: EmployeeIndex };
     }
   });

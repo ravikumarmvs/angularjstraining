@@ -8,7 +8,7 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
             enterText(employeeFactory.EmployeeStatusString.statusValue);
 
             scope.$watch(function () { return employeeFactory.EmployeeStatusString }, function (NewValue, OldValue) {
-                if (NewValue !== undefined || NewValue !== '') {
+                if (NewValue !== undefined && NewValue !== '' && NewValue !== OldValue) {
                     NewValue = employeeFactory.EmployeeStatusString.statusValue;
                     if (NewValue.includes('Added')) {
                         element.removeClass('employeeStatusDeleted');
@@ -32,7 +32,7 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($int
                     element.text('');
                     $interval.cancel(timeoutId);
                 }, 3000);
-            });
+            }, true);
 
             function enterText(value) {
                 element.text(value);
