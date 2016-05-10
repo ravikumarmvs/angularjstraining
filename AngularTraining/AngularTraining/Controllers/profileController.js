@@ -1,7 +1,7 @@
 /// <reference path="C:\Users\ravikumar_su.PHOTON\Documents\Visual Studio 2013\Projects\AngularTraining\AngularTraining\app/angular.intellisense.js" />
 
-angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootScope, $scope, employeeFactory) {
-    
+angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootScope, $scope, $location, employeeFactory) {
+    $rootScope.isLoginPage = false;
     $scope.currentEmployee = employeeFactory.sharedProfile;
     $scope.DisableUpdation = function () {
         if (employeeFactory.compareEmployeeObject(undefined, employeeFactory.sharedProfile))
@@ -17,5 +17,6 @@ angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootSco
         employeeFactory.UpdateEmployeeValue(newEmployee, EmployeeIndex);
         employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Updated', index: EmployeeIndex });
         //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Updated', index: EmployeeIndex };
+        $location.path('/employeeEntry');
     }
   });

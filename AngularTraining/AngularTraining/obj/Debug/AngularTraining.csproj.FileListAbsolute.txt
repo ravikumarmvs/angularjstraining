@@ -6,3 +6,11 @@ c:\users\ravikumar_su.photon\documents\visual studio 2013\Projects\AngularTraini
 c:\users\ravikumar_su.photon\documents\visual studio 2013\Projects\AngularTraining\AngularTraining\obj\Debug\AngularTraining.csprojResolveAssemblyReference.cache
 C:\Users\ravikumar_su.PHOTON\Documents\Visual Studio 2013\Projects\AngularTraining\AngularTraining\obj\Debug\AngularTraining.Properties.Resources.resources
 C:\Users\ravikumar_su.PHOTON\Documents\Visual Studio 2013\Projects\AngularTraining\AngularTraining\obj\Debug\AngularTraining.csproj.GenerateResource.Cache
+C:\Angular Training\AngularTraining\AngularTraining\bin\AngularTraining.dll.config
+C:\Angular Training\AngularTraining\AngularTraining\bin\AngularTraining.dll
+C:\Angular Training\AngularTraining\AngularTraining\bin\AngularTraining.pdb
+C:\Angular Training\AngularTraining\AngularTraining\obj\Debug\AngularTraining.csprojResolveAssemblyReference.cache
+C:\Angular Training\AngularTraining\AngularTraining\obj\Debug\AngularTraining.Properties.Resources.resources
+C:\Angular Training\AngularTraining\AngularTraining\obj\Debug\AngularTraining.csproj.GenerateResource.Cache
+C:\Angular Training\AngularTraining\AngularTraining\obj\Debug\AngularTraining.dll
+C:\Angular Training\AngularTraining\AngularTraining\obj\Debug\AngularTraining.pdb

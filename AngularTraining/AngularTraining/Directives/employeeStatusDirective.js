@@ -8,7 +8,7 @@ angular.module('EmployeeDB').directive('employeeStatusDirective', function ($tim
             enterText(employeeFactory.EmployeeStatusString.statusValue);
 
             scope.$watch(function () { return employeeFactory.EmployeeStatusString }, function (NewValue, OldValue) {
-                if (NewValue !== undefined && NewValue !== '' && NewValue !== OldValue) {
+                if (NewValue !== undefined && NewValue !== '') {
                     NewValue = employeeFactory.EmployeeStatusString.statusValue;
                     if (NewValue.includes('Added')) {
                         element.removeClass('employeeStatusDeleted');

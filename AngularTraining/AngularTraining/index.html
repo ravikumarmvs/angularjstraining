@@ -4,43 +4,29 @@
 <head>
     <title> Employee Registration Form </title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
 </head>
 <body>
     <table>
         <tr>
             <td>
-                <div ng-controller="EmployeesEntryCtrl">                    
-                    <employee-entry-directive action-type="addEmployees()" my-initial-employee="InitialEmployeeInParentScope" action-name="Add Employees" my-enable-disable="CheckEnableDisable()"></employee-entry-directive>
-                    <h4 employee-status-directive></h4>
-                    Filter string: <input type="text" ng-model="search.name" /> Case sensitive search? : <input type="checkbox" ng-model="isCaseSensitiveSearch" />
-                    <ul>
-                        <li ng-repeat="e in EmployeeArray |  employeeSearchFilter:search.name:isCaseSensitiveSearch | orderBy:'-id'">
-                            <first-directive></first-directive>
-                        </li>
-                    </ul>
-                </div>
-                <div ng-controller="EmployeeProfileCtrl">
-                    <h3>Employee Name = '{{currentEmployee.name}}'</h3>
-                    <h3>Role = '{{currentEmployee.role}}'</h3>
-                    <h3>Working on '{{currentEmployee.projectDetails.project}}' project, at '{{currentEmployee.projectDetails.projectLocation}}'</h3>
-                    <employee-entry-directive action-type="updateEmployees(currentEmployee, currentEmployee.index)" my-initial-employee="currentEmployee" action-name="Update Employees" my-enable-disable="DisableUpdation()"></employee-entry-directive>
-                </div>
-
-                <div>
+                <div ng-view></div>
+                <div ng-hide="isLoginPage">
                     History:
                     <div ng-repeat="historyItem in rootHistoryItems">
                         <h2> {{historyItem.name}} </h2>
                     </div>
                 </div>
             </td>
-            <td valign="top">
-                <h3> <span> User Name: {{applicationUserName}} , User Id: {{applicationUserId}}</span> </h3>                
+            <td valign="top" ng-hide="isLoginPage">
+                <h3> <span> User Name: {{applicationUserName}} </span> </h3>
             </td>
         </tr>
     </table>
 
     <link href="mycss.css" rel="stylesheet" />
     <script src="app\app.module.js"></script>
+    <script src="Controllers\loginController.js"></script>
     <script src="Controllers\employeesController.js"></script>
     <script src="Factories\employeeFactory.js"></script>
     <script src="Directives\employeeEntryDirective.js"></script>

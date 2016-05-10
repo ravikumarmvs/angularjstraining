@@ -60,6 +60,7 @@
     <None Include="app\angular.intellisense.js" />
     <Content Include="app\app.module.js" />
     <Content Include="Controllers\employeesController.js" />
+    <Content Include="Controllers\loginController.js" />
     <Content Include="Controllers\profileController.js" />
     <Content Include="Directives\employeeStatusDirective.js" />
     <Content Include="Directives\employeeEntryDirective.js" />
@@ -69,6 +70,9 @@
     <Content Include="Factories\employeeFactory.js" />
     <Content Include="Filters\employeeFilter.js" />
     <Content Include="Filters\employeeSearchFilter.js" />
+    <Content Include="Templates\employee_list.html" />
+    <Content Include="Templates\login_page.html" />
+    <Content Include="Templates\profile.html" />
     <Content Include="mycss.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\AngularJS.pubxml" />
