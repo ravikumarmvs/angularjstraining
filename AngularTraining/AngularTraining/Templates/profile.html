@@ -3,5 +3,5 @@
     <h3>Employee Name = '{{currentEmployee.name}}'</h3>
     <h3>Role = '{{currentEmployee.role}}'</h3>
     <h3>Working on '{{currentEmployee.projectDetails.project}}' project, at '{{currentEmployee.projectDetails.projectLocation}}'</h3>
-    <employee-entry-directive action-type="updateEmployees(currentEmployee, currentEmployee.index)" my-initial-employee="currentEmployee" action-name="Update Employees" my-enable-disable="DisableUpdation()"></employee-entry-directive>
+    <employee-entry-directive action-type="updateEmployees(currentEmployee)" my-initial-employee="currentEmployee" action-name="Update Employees" my-enable-disable="DisableUpdation()"></employee-entry-directive>
 </div>

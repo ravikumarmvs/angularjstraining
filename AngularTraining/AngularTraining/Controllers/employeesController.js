@@ -61,7 +61,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
         employeeFactory.updateSharedProfile(currentEmployee, indexValue);
         $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile viewed", indexValue: indexValue });
         employeeFactory.DisableEmployeeProfileUpdationButton(false);
-        $location.path('/profile');
+        $location.path('/profile/' + currentEmployee.id);
     }
 
     function init() {

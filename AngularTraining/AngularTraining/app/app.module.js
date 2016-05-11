@@ -2,7 +2,8 @@
 'use strict';
 angular.module('loginDB', []);
 angular.module('ProfileDB', []);
-var employeeDb1 = angular.module('EmployeeDB', ['ngRoute', 'ProfileDB', 'loginDB']);
+angular.module('EmployeeDB', []);
+var employeeDb1 = angular.module('MainDB', ['ngRoute', 'EmployeeDB', 'ProfileDB', 'loginDB' ]);
 employeeDb1.config(function ($routeProvider) {
     $routeProvider.
         when('/', {
@@ -13,7 +14,7 @@ employeeDb1.config(function ($routeProvider) {
           templateUrl: 'Templates/employee_list.html',
           controller: 'EmployeesEntryCtrl'
       }).
-      when('/profile', {
+      when('/profile/:id', {
           templateUrl: 'Templates/profile.html',
           controller: 'EmployeeProfileCtrl'
       }).

@@ -33,7 +33,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             }
         },
         UpdateEmployeeValue: function (employee, e) {
-            var empObj = this.EmployeeArray[e];
+            var empObj = this.GetEmployeeById(e) //EmployeeArray[e];
             empObj.name = employee.name;
             empObj.role = employee.role;
             empObj.projectDetails.project = employee.projectDetails.project;
@@ -64,6 +64,13 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             this.EmployeeStatusString.statusValue = statusObject.statusValue;
             this.EmployeeStatusString.index = statusObject.index;
             this.EmployeeStatusString.junk = Math.random(1000);
+        },
+        GetEmployeeById: function (id){
+            for (var i = 0, len = this.EmployeeArray.length; i < len; i++) {
+                var employee1 = this.EmployeeArray[i];
+                if (employee1.id == id)
+                    return this.EmployeeArray[i];
+            }
         }
     };
 });
