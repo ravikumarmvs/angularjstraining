@@ -21,17 +21,8 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
         var newEmployee = { id: employeeFactory.EmployeeArray.length, name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation }, index: employeeFactory.EmployeeArray.length };
         if (employeeFactory.compareEmployeeObject(undefined, newEmployee))
             return alert('Employee already exists. Please enter a unique Employee');
+        employeeFactory.DisableEmployeeProfileUpdationButton(false);
 
-
-        if (employeeFactory.sharedProfile.name == "default name") {
-            if (employeeFactory.EmployeeArray == undefined || employeeFactory.EmployeeArray.length <= 0) {
-                employeeFactory.updateSharedProfile(newEmployee, 0);
-                employeeFactory.DisableEmployeeProfileUpdationButton(false);
-            }
-            else {
-                employeeFactory.updateSharedProfile(employeeFactory.EmployeeArray[0], 0);
-            }
-        }
         employeeFactory.AddArrayValue(newEmployee);
         employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 });
         //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 };
@@ -44,21 +35,10 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
 
         employeeFactory.EmployeeArray.splice(employeeFactory.EmployeeArray.indexOf(e), 1);
         employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Deleted', index: indexValue });
-        //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Deleted', index: indexValue };
-        if (employeeFactory.compareEmployeeObject(e, employeeFactory.sharedProfile)) {
-            employeeFactory.updateSharedProfile(undefined);
-            employeeFactory.DisableEmployeeProfileUpdationButton(true);
-        }
         $rootScope.rootHistoryItems.push({ name: e.name + " has been removed", indexValue: indexValue });
     }
-    // set default profile value.
-    if (employeeFactory.EmployeeArray != undefined && employeeFactory.EmployeeArray.length > 0) {
-        employeeFactory.updateSharedProfile(employeeFactory.EmployeeArray[0], 0);
-        employeeFactory.DisableEmployeeProfileUpdationButton(false);
-    }
-
+    
     $scope.viewProfile = function (currentEmployee, indexValue) {
-        employeeFactory.updateSharedProfile(currentEmployee, indexValue);
         $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile viewed", indexValue: indexValue });
         employeeFactory.DisableEmployeeProfileUpdationButton(false);
         $location.path('/profile/' + currentEmployee.id);

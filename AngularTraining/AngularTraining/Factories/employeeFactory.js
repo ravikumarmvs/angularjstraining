@@ -4,41 +4,16 @@
 angular.module('EmployeeDB').factory('employeeFactory', function()
 {
     return {
-        sharedProfile: {
-            name: 'default name',
-            role: 'default role',
-            projectDetails: {
-                project: 'initial project',
-                projectLocation: 'Initial Project Location'
-            },
-            index: ''
-        },
         EmployeeArray: [{id:0, name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }, index: 0 }, {id:1, name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }, index: 1 }, {id:2, name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }, index: 2 }]
         ,
         DisableUpdateProfile: true,
-        EmployeeStatusString: {statusValue:'', index:'', junk:''},
-        updateSharedProfile: function (newEmployee, indexValue) {
-            if (newEmployee != undefined) {
-                this.sharedProfile.name = newEmployee.name;
-                this.sharedProfile.role = newEmployee.role;
-                this.sharedProfile.projectDetails.project = newEmployee.projectDetails.project;
-                this.sharedProfile.projectDetails.projectLocation = newEmployee.projectDetails.projectLocation;
-                this.sharedProfile.index = indexValue;
-            }
-            else {
-                this.sharedProfile.name = 'default name',
-                this.sharedProfile.role = 'default role',
-                this.sharedProfile.projectDetails.project = 'initial project',
-                this.sharedProfile.projectDetails.projectLocation = 'Initial Project Location'
-            }
-        },
+        EmployeeStatusString: {statusValue:'', index:'', junk:''},        
         UpdateEmployeeValue: function (employee, e) {
             var empObj = this.GetEmployeeById(e) //EmployeeArray[e];
             empObj.name = employee.name;
             empObj.role = employee.role;
             empObj.projectDetails.project = employee.projectDetails.project;
             empObj.projectDetails.projectLocation = employee.projectDetails.projectLocation;
-            this.updateSharedProfile(employee, e);
         },
         AddArrayValue: function (e) {
             var employee1 = { id: e.id, name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }, index:e.index };
