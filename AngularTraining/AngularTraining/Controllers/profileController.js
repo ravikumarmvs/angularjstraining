@@ -10,12 +10,12 @@ angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootSco
         return !$scope.currentEmployee.name || !$scope.currentEmployee.role || !$scope.currentEmployee.projectDetails.project || !$scope.currentEmployee.projectDetails.projectLocation || employeeFactory.DisableUpdateProfile;
     }
     $scope.updateEmployees = function (currentEmployee) {        
-        var newEmployee = { name: currentEmployee.name, role: currentEmployee.role, projectDetails: { project: currentEmployee.projectDetails.project, projectLocation: currentEmployee.projectDetails.projectLocation }, index: currentEmployee.index };
+        var newEmployee = { name: currentEmployee.name, role: currentEmployee.role, projectDetails: { project: currentEmployee.projectDetails.project, projectLocation: currentEmployee.projectDetails.projectLocation }};
 
         $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile changed", indexValue: currentEmployee.id });
 
         employeeFactory.UpdateEmployeeValue(newEmployee, currentEmployee.id);
-        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Updated', index: currentEmployee.id });
+        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Updated', empId: currentEmployee.id });
         $location.path('/employeeEntry');
     }
   });

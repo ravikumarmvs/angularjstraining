@@ -4,10 +4,10 @@
 angular.module('EmployeeDB').factory('employeeFactory', function()
 {
     return {
-        EmployeeArray: [{id:0, name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }, index: 0 }, {id:1, name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }, index: 1 }, {id:2, name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }, index: 2 }]
+        EmployeeArray: [{id:0, name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }}, {id:1, name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }}, {id:2, name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }}]
         ,
         DisableUpdateProfile: true,
-        EmployeeStatusString: {statusValue:'', index:'', junk:''},        
+        EmployeeStatusString: {statusValue:'', empId:'', junk:''},        
         UpdateEmployeeValue: function (employee, e) {
             var empObj = this.GetEmployeeById(e) //EmployeeArray[e];
             empObj.name = employee.name;
@@ -16,7 +16,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
             empObj.projectDetails.projectLocation = employee.projectDetails.projectLocation;
         },
         AddArrayValue: function (e) {
-            var employee1 = { id: e.id, name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }, index:e.index };
+            var employee1 = { id: e.id, name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }};
             this.EmployeeArray.push(employee1);
         },
         DisableEmployeeProfileUpdationButton: function (updateOrNot) {
@@ -37,7 +37,7 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
         },
         UpdateEmployeeStatusString: function (statusObject) {
             this.EmployeeStatusString.statusValue = statusObject.statusValue;
-            this.EmployeeStatusString.index = statusObject.index;
+            this.EmployeeStatusString.empId = statusObject.empId;
             this.EmployeeStatusString.junk = Math.random(1000);
         },
         GetEmployeeById: function (id){

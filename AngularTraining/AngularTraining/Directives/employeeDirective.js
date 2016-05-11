@@ -8,7 +8,7 @@ angular.module('EmployeeDB').directive('firstDirective', function ($timeout, emp
             var myTimeoutId;
             scope.$watch(function () { return employeeFactory.EmployeeStatusString }, function (NewValue, OldValue) {
                 if (NewValue !== undefined && NewValue !== '') {
-                    if (employeeFactory.EmployeeStatusString.index === scope.e.index) {
+                    if (employeeFactory.EmployeeStatusString.empId === scope.e.id) {
                         enterText(employeeFactory.EmployeeStatusString.statusValue);
                     }
                 }

@@ -24,22 +24,21 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
         employeeFactory.DisableEmployeeProfileUpdationButton(false);
 
         employeeFactory.AddArrayValue(newEmployee);
-        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 });
-        //employeeFactory.EmployeeStatusString = { statusValue: 'status: Employee Added', index: employeeFactory.EmployeeArray.length - 1 };
+        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Added', empId: newEmployee.id });
 
         $rootScope.rootHistoryItems.push({ name: newEmployee.name + " has been added", indexValue: Math.random() });
         init();
     }
 
-    $scope.removeEmployees = function (e, indexValue) {
+    $scope.removeEmployees = function (e) {
 
         employeeFactory.EmployeeArray.splice(employeeFactory.EmployeeArray.indexOf(e), 1);
-        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Deleted', index: indexValue });
-        $rootScope.rootHistoryItems.push({ name: e.name + " has been removed", indexValue: indexValue });
+        employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Deleted', empId: e.id });
+        $rootScope.rootHistoryItems.push({ name: e.name + " has been removed", indexValue: e.id });
     }
     
-    $scope.viewProfile = function (currentEmployee, indexValue) {
-        $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile viewed", indexValue: indexValue });
+    $scope.viewProfile = function (currentEmployee) {
+        $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile viewed", indexValue: currentEmployee.id });
         employeeFactory.DisableEmployeeProfileUpdationButton(false);
         $location.path('/profile/' + currentEmployee.id);
     }
