@@ -4,19 +4,14 @@
 <head>
     <title> Employee Registration Form </title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>-->
 </head>
 <body>
     <table>
         <tr>
             <td>
-                <div ng-view></div>
-                <div ng-hide="isLoginPage">
-                    History:
-                    <div ng-repeat="historyItem in rootHistoryItems">
-                        <h2> {{historyItem.name}} </h2>
-                    </div>
-                </div>
+                <div ui-view></div>                
             </td>
             <td valign="top" ng-hide="isLoginPage">
                 <h3> <span> User Name: {{applicationUserName}} </span> </h3>

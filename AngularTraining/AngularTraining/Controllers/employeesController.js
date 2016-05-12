@@ -2,7 +2,7 @@
 
 'use strict';
 
-angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootScope, $scope, $location, employeeFactory) {
+angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootScope, $scope, $state, employeeFactory) {
     $rootScope.isLoginPage = false;
     $scope.EmployeeArray = employeeFactory.EmployeeArray;
     $scope.InitialEmployeeInParentScope = {};
@@ -40,7 +40,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
     $scope.viewProfile = function (currentEmployee) {
         $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile viewed", indexValue: currentEmployee.id });
         employeeFactory.DisableEmployeeProfileUpdationButton(false);
-        $location.path('/profile/' + currentEmployee.id);
+        $state.go('profile', {id:currentEmployee.id});
     }
 
     function init() {

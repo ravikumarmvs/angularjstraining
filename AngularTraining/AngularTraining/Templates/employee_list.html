@@ -7,5 +7,8 @@
         <li ng-repeat="e in EmployeeArray |  employeeSearchFilter:search.name:isCaseSensitiveSearch | orderBy:'-id'">
             <first-directive></first-directive>
         </li>
-    </ul>
+    </ul>    
 </div>
+
+<a ui-sref=".activities">Activities</a>
+<div ui-view></div>
