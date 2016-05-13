@@ -13,9 +13,16 @@ angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootSco
         var newEmployee = { name: currentEmployee.name, role: currentEmployee.role, projectDetails: { project: currentEmployee.projectDetails.project, projectLocation: currentEmployee.projectDetails.projectLocation }};
 
         //$rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile changed", indexValue: currentEmployee.id });
-        
+        updateActivities({ value: currentEmployee.name + " profile changed", junk: Math.random() });
         employeeFactory.UpdateEmployeeValue(newEmployee, currentEmployee.id);
         employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Updated', empId: currentEmployee.id });
         $state.go('employeeEntry');
+    }
+
+    function updateActivities(message) {
+        $scope.$broadcast('onAddingActivity', message);
+        $scope.$on('onSuccess', function (event, data) {
+            console.log('the returned message was  -> ' + data.value);
+        });
     }
   });
