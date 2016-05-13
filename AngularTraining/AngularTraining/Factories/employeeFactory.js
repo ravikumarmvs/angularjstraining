@@ -4,6 +4,7 @@
 angular.module('EmployeeDB').factory('employeeFactory', function()
 {
     return {
+        HistoryItems : [],
         EmployeeArray: [{id:0, name: 'ravi', role: 'architect', projectDetails: { project: 'cpd', projectLocation: 'bangalore' }}, {id:1, name: 'lokesh', role: 'lead', projectDetails: { project: 'ppd', projectLocation: 'chennai' }}, {id:2, name: 'shiva', role: 'dev', projectDetails: { project: 'Packaging', projectLocation: 'USA' }}]
         ,
         DisableUpdateProfile: true,
@@ -18,6 +19,10 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
         AddArrayValue: function (e) {
             var employee1 = { id: e.id, name: e.name, role: e.role, projectDetails: { project: e.projectDetails.project, projectLocation: e.projectDetails.projectLocation }};
             this.EmployeeArray.push(employee1);
+        },
+        AddHistoryItem: function (historyItem) {
+            var historyItem1 = { value: historyItem.value, junk: historyItem.junk};
+            this.HistoryItems.push(historyItem1);
         },
         DisableEmployeeProfileUpdationButton: function (updateOrNot) {
             this.DisableUpdateProfile = updateOrNot;
@@ -46,6 +51,6 @@ angular.module('EmployeeDB').factory('employeeFactory', function()
                 if (employee1.id == id)
                     return this.EmployeeArray[i];
             }
-        }
+        }        
     };
 });

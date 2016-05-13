@@ -12,8 +12,8 @@ angular.module('ProfileDB').controller('EmployeeProfileCtrl', function ($rootSco
     $scope.updateEmployees = function (currentEmployee) {        
         var newEmployee = { name: currentEmployee.name, role: currentEmployee.role, projectDetails: { project: currentEmployee.projectDetails.project, projectLocation: currentEmployee.projectDetails.projectLocation }};
 
-        $rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile changed", indexValue: currentEmployee.id });
-
+        //$rootScope.rootHistoryItems.push({ name: currentEmployee.name + " profile changed", indexValue: currentEmployee.id });
+        
         employeeFactory.UpdateEmployeeValue(newEmployee, currentEmployee.id);
         employeeFactory.UpdateEmployeeStatusString({ statusValue: 'status: Employee Updated', empId: currentEmployee.id });
         $state.go('employeeEntry');

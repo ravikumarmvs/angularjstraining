@@ -61,6 +61,7 @@
     <Content Include="app\app.module.js" />
     <Content Include="Controllers\employeesController.js" />
     <Content Include="Controllers\loginController.js" />
+    <Content Include="Controllers\activityController.js" />
     <Content Include="Controllers\profileController.js" />
     <Content Include="Directives\employeeStatusDirective.js" />
     <Content Include="Directives\employeeEntryDirective.js" />

@@ -1,9 +1,10 @@
 
 'use strict';
+angular.module('activityDB', []);
 angular.module('loginDB', []);
 angular.module('ProfileDB', []);
 angular.module('EmployeeDB', []);
-var employeeDb1 = angular.module('MainDB', ['ui.router', 'EmployeeDB', 'ProfileDB', 'loginDB']);
+var employeeDb1 = angular.module('MainDB', ['ui.router', 'EmployeeDB', 'ProfileDB', 'loginDB', 'activityDB']);
 employeeDb1.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/login");
 
@@ -18,9 +19,11 @@ employeeDb1.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'Templates/employee_list.html',
             controller: 'EmployeesEntryCtrl'
         }).
-        state('employeeEntry.activities', {            
-            templateUrl: 'Templates/employee_activities.html'
-        }).
+        //state('employeeEntry.activities', {
+        //    url: 'activities',
+        //    templateUrl: 'Templates/employee_activities.html',
+        //    controller: 'activityCtrl'
+        //}).
         state('profile', {
             url: '/profile?id',
             templateUrl: 'Templates/profile.html',

@@ -1,6 +1,8 @@
-﻿<div ng-hide="isLoginPage">
-    History:
-    <div ng-repeat="historyItem in rootHistoryItems">
-        <h2> {{historyItem.name}} </h2>
+﻿<div ng-controller="activityCtrl">
+    <div ng-hide="isLoginPage">
+        History:
+        <div ng-repeat="activity in activities">
+            <h2> {{activity.value}} </h2>
+        </div>
     </div>
 </div>
