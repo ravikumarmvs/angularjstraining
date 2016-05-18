@@ -18,7 +18,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
     }
 
     $scope.addEmployees = function () {
-        var newEmployee = { id: employeeFactory.EmployeeArray.length, name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation }, index: employeeFactory.EmployeeArray.length };
+        var newEmployee = { id: employeeFactory.EmployeeArray[employeeFactory.EmployeeArray.length - 1].id + 1, name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation }, index: employeeFactory.EmployeeArray.length };
         if (employeeFactory.compareEmployeeObject(undefined, newEmployee))
             return alert('Employee already exists. Please enter a unique Employee');
         employeeFactory.DisableEmployeeProfileUpdationButton(false);
