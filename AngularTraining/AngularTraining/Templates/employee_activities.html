@@ -1,7 +1,7 @@
-﻿<div ng-controller="activityCtrl">
+﻿<div ng-controller="activityCtrl as myActivities">
     <div ng-hide="isLoginPage">
         History:
-        <div ng-repeat="activity in activities">
+        <div ng-repeat="activity in myActivities.activities">
             <h2> {{activity.value}} </h2>
         </div>
     </div>

@@ -71,6 +71,7 @@
     <Content Include="Factories\employeeFactory.js" />
     <Content Include="Filters\employeeFilter.js" />
     <Content Include="Filters\employeeSearchFilter.js" />
+    <Content Include="Services\activityService.js" />
     <Content Include="Templates\employee_activities.html" />
     <Content Include="Templates\employee_list.html" />
     <Content Include="Templates\login_page.html" />

@@ -7,12 +7,21 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
     $scope.EmployeeArray = employeeFactory.EmployeeArray;
     $scope.InitialEmployeeInParentScope = {};
     $scope.InitialEmployeeInParentScope.projectDetails = {};
-    if ($rootScope.rootHistoryItems == undefined || $rootScope.rootHistoryItems.length <= 0) {
-        $rootScope.rootHistoryItems = [];
-    }
+    //if ($rootScope.rootHistoryItems == undefined || $rootScope.rootHistoryItems.length <= 0) {
+    //    $rootScope.rootHistoryItems = [];
+    //}
     //$rootScope.applicationUserName = $routeParams.userName;
     //$rootScope.applicationUserId = "E3102";
-
+    $scope.$watch(function () { return employeeFactory.EmployeeArray.length }, function (NewValue, OldValue) {
+        if (NewValue != OldValue) {
+            if (NewValue > OldValue) {
+                alert('Employee has been added');
+            }
+            else {
+                alert('Employee has been removed');
+            }
+        }
+    }, true);
     $scope.CheckEnableDisable = function () {
         return (!$scope.InitialEmployeeInParentScope.name || !$scope.InitialEmployeeInParentScope.role || !$scope.InitialEmployeeInParentScope.projectDetails.project || !$scope.InitialEmployeeInParentScope.projectDetails.projectLocation);
     }
