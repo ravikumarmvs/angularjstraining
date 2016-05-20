@@ -6,12 +6,7 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
     $rootScope.isLoginPage = false;
     $scope.EmployeeArray = employeeFactory.EmployeeArray;
     $scope.InitialEmployeeInParentScope = {};
-    $scope.InitialEmployeeInParentScope.projectDetails = {};
-    //if ($rootScope.rootHistoryItems == undefined || $rootScope.rootHistoryItems.length <= 0) {
-    //    $rootScope.rootHistoryItems = [];
-    //}
-    //$rootScope.applicationUserName = $routeParams.userName;
-    //$rootScope.applicationUserId = "E3102";
+    $scope.InitialEmployeeInParentScope.projectDetails = {};    
     $scope.$watch(function () { return employeeFactory.EmployeeArray.length }, function (NewValue, OldValue) {
         if (NewValue != OldValue) {
             if (NewValue > OldValue) {
@@ -23,10 +18,14 @@ angular.module('EmployeeDB').controller('EmployeesEntryCtrl', function ($rootSco
         }
     }, true);
     $scope.CheckEnableDisable = function () {
-        return (!$scope.InitialEmployeeInParentScope.name || !$scope.InitialEmployeeInParentScope.role || !$scope.InitialEmployeeInParentScope.projectDetails.project || !$scope.InitialEmployeeInParentScope.projectDetails.projectLocation);
+        return (!$scope.InitialEmployeeInParentScope.name || !$scope.InitialEmployeeInParentScope.role);
     }
 
     $scope.addEmployees = function () {
+        if (!$scope.InitialEmployeeInParentScope.projectDetails.project)
+            $scope.InitialEmployeeInParentScope.projectDetails.project = 'TBD';
+        if (!$scope.InitialEmployeeInParentScope.projectDetails.projectLocation)
+            $scope.InitialEmployeeInParentScope.projectDetails.projectLocation = 'TBD';
         var newEmployee = { id: employeeFactory.EmployeeArray[employeeFactory.EmployeeArray.length - 1].id + 1, name: $scope.InitialEmployeeInParentScope.name, role: $scope.InitialEmployeeInParentScope.role, projectDetails: { project: $scope.InitialEmployeeInParentScope.projectDetails.project, projectLocation: $scope.InitialEmployeeInParentScope.projectDetails.projectLocation }, index: employeeFactory.EmployeeArray.length };
         if (employeeFactory.compareEmployeeObject(undefined, newEmployee))
             return alert('Employee already exists. Please enter a unique Employee');
